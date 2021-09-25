@@ -1,9 +1,14 @@
 import React from 'react'
+import OtherUser from './rightPanelComponent/OtherUser'
 
 const RightPanel = () => {
     return (
         <div className="rightPanel">
-            Right
+            <OtherUser />
+            <OtherUser />
+            <OtherUser />
+            <OtherUser />
+
         </div>
     )
 }

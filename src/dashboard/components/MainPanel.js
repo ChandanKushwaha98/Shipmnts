@@ -10,9 +10,6 @@ const MainPanel = () => {
 
             <Header />
             <CreatePost />
-            <Post />
-
-
         </div>
     )
 }
