@@ -26,17 +26,38 @@ class CreatePost extends Component {
             tweet: "",
             user: "",
             flag: 0,
+            isValid: true
 
         }
         this.handleInputChange = this.handleInputChange.bind(this);
     }
     handleInputChange(e) {
-        // if(e.target.value.length)
-        console.log(e.target.value.length);
-        this.setState({
-            tweet: e.target.value,
-            flag: 0
-        });
+        console.log(e.target.value.length)
+        if (e.target.value.length < 1) {
+            console.log("inside<1")
+            this.setState({
+                isValid: false
+            });
+        }
+        else if (e.target.value.length < 140) {
+            console.log("should be less than 140 words");
+            this.setState({
+                isValid: true
+            });
+        } else
+            if (e.target.value.length > 140) {
+                console.log("should be less than 140 words");
+                this.setState({
+                    isValid: false
+                });
+            } else {
+                console.log(e.target.value.length);
+                this.setState({
+                    tweet: e.target.value,
+                    flag: 0
+                });
+            }
+
 
     }
     clearTextBox() {
@@ -45,12 +66,14 @@ class CreatePost extends Component {
             flag: 0
         });
     }
-   
+
     handleTweet(e) {
-        console.log(this.state.tweet);
-        this.setState({
-            flag: 1,
-        })
+        if (this.state.isValid) {
+            console.log(this.state.tweet);
+            this.setState({
+                flag: 1,
+            })
+        } else { }
     }
     render() {
         console.log(this.state.tweet);
@@ -59,13 +82,15 @@ class CreatePost extends Component {
                 <div className="createPost">
                     <div className="txtarea">
                         <textarea rows="6" cols="70" placeholder="What's on your mind..." onChange={this.handleInputChange} />
+                        {this.state.isValid ? "" : <h3 className="txtred"> Should be greater than 0 and less than 140 charcters</h3>}
                     </div>
                     <div className="tweet">
-                        <button type="button" className="tweet_btn" onClick={e => this.handleTweet(e)}>Tweet</button>
+                        {this.state.isValid ? <button type="button" className="tweet_btn" onClick={e => this.handleTweet(e)}>Tweet</button> : <button type="button" className="tweet_btn" disabled>Tweet</button>}
+
                     </div>
                     {this.state.flag === 1 && <Post msg={this.state.tweet} />}
                 </div>
-            </div>
+            </div >
         );
     }
 }

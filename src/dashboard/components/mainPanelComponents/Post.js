@@ -1,10 +1,10 @@
 import React from 'react'
-import {Card, CardImg, CardText, CardBody, Button} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Button } from 'reactstrap';
 import dp from "../../../images/dp.jpg"
 
 const Post = (props) => {
     return (
-        
+
         <div className="postCardDiv">
             <Card className="postCard">
                 <span className="dp-name">
@@ -12,7 +12,7 @@ const Post = (props) => {
                 <CardBody>
 
                     <CardText className="card-text">{props.msg}</CardText>
-                    
+
                 </CardBody>
             </Card>
         </div>
