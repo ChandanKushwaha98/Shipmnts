@@ -1,24 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Button, CardImg, CardTitle, CardText, CardSubtitle, CardBody } from 'reactstrap';
+import { Card, Button, CardImg, CardText, CardBody } from 'reactstrap';
 import dp from "../../../images/dp.jpg"
 import '../../../App.css'
 
-// const OtherUser = () => {
-
-//     return (
-
-//         <Card className="otherUserCard">
-//             <span className="dp-name-otherUser">
-//                     <CardImg className="dp-otherUser" src={dp} alt="Card image cap" /><span className="dp-text-otherUser txtwhite">Chandan Kushwaha</span></span>
-//         <CardBody>
-//         <Button color="primary">Follow</Button>{' '}
-//         </CardBody>
-//       </Card>
-
-//     )
-// }
-
-// export default OtherUser
 class OtherUser extends Component {
     constructor(props) {
         super(props);
@@ -28,9 +12,8 @@ class OtherUser extends Component {
 
 
         }
-        // this.handleInputChange = this.handleInputChange.bind(this);
     }
-    followChanged = () => {
+    followChanged = (props) => {
 
         this.setState({
             follow: !this.state.follow,
@@ -43,18 +26,13 @@ class OtherUser extends Component {
             <div>
                 <Card className="otherUserCard">
                     <span className="dp-name-otherUser">
-                        <CardImg className="dp-otherUser" src={dp} alt="Card image cap" /><span className="dp-text-otherUser txtwhite">Chandan Kushwaha</span></span>
+                        <CardImg className="dp-otherUser" src={this.props.img} alt="Card image cap" /><span className="dp-text-otherUser txtwhite">{this.props.name}</span></span>
                     <CardBody>
-                        {/* <Button color="primary" onClick={e => this.followChanged(e)}>{this.state.follow ? "Unfollow" : "Follow"}</Button> */}
-
                         {
                             this.state.follow
                                 ? <div> <Button color="primary" onClick={e => this.followChanged(e)}>Unfollow</Button><CardText>You are now following</CardText></div>
                                 : <Button color="primary" onClick={e => this.followChanged(e)}>Follow</Button>
                         }
-
-
-
                     </CardBody>
                 </Card>
             </div>

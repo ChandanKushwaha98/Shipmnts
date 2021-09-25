@@ -2,7 +2,6 @@
         display: flex;
         background-color: black;
         justify-content: space-around;
-        align-items: center;
     }
     
     .sidebar {
@@ -25,8 +24,9 @@
     
     .logo {
         margin-top: 5vh;
-        width: 20vw;
-        margin-left: 2.5vw;
+        /* width: 20vw; */
+        height: 10vh;
+        margin-left: 8vw;
         margin-right: 2.5vw;
     }
     
@@ -200,4 +200,5 @@
     
     .txtred {
         color: red;
+        margin-left: 5vw;
     }
