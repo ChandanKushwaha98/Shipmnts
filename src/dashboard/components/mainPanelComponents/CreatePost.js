@@ -40,8 +40,9 @@ class CreatePost extends Component {
             });
         }
         else if (e.target.value.length < 140) {
-            console.log("should be less than 140 words");
+            console.log("be less than 140 words");
             this.setState({
+                tweet: e.target.value,
                 isValid: true
             });
         } else
@@ -50,14 +51,7 @@ class CreatePost extends Component {
                 this.setState({
                     isValid: false
                 });
-            } else {
-                console.log(e.target.value.length);
-                this.setState({
-                    tweet: e.target.value,
-                    flag: 0
-                });
             }
-
 
     }
     clearTextBox() {
@@ -76,7 +70,6 @@ class CreatePost extends Component {
         } else { }
     }
     render() {
-        console.log(this.state.tweet);
         return (
             <div>
                 <div className="createPost">
@@ -88,8 +81,9 @@ class CreatePost extends Component {
                         {this.state.isValid ? <button type="button" className="tweet_btn" onClick={e => this.handleTweet(e)}>Tweet</button> : <button type="button" className="tweet_btn" disabled>Tweet</button>}
 
                     </div>
-                    {this.state.flag === 1 && <Post msg={this.state.tweet} />}
+                    
                 </div>
+                {this.state.flag === 1 && <Post msg={this.state.tweet} />}
             </div >
         );
     }
